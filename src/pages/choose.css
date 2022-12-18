@@ -1,0 +1,37 @@
+.back {
+  border: none;
+  padding: 18px;
+  padding-bottom: 15px;
+}
+
+.title {
+  padding: 18px;
+}
+
+.pageBody {
+  margin: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.choose {
+  background-color: #f8f8f8;
+  border: none;
+  width: 45%;
+  height: 80px;
+  border-radius: 10px;
+  color: rgb(37, 37, 37);
+  margin: 0px 2% 14px;
+}
+.choose:last-child {
+  opacity: 0%;
+  cursor: default;
+}
+
+.activeBox {
+  background: rgb(0, 206, 124);
+  color: rgb(255, 255, 255);
+  transition: background-color 0.25s ease-out 0s;
+}
