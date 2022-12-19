@@ -3,15 +3,59 @@ import React from "react";
 import "./choose.css";
 
 import { Navigate, NavigationType, useNavigate } from "react-router-dom";
-import { StoreContext } from "../App";
+// import { StoreContext } from "/Main";
 
 axios.defaults.withCredentials = true;
 
 function Choose() {
-  const navigate = useNavigate();
-  // const 선택 = (클릭) =>{
+  // const { category, setCategory, search } = React.useContext(StoreContext);
 
-  // }
+  const navigate = useNavigate();
+
+  const [search, setSearch] = React.useState({
+    text: "",
+    category: "",
+  });
+
+  const [category, setCategory] = React.useState([
+    {
+      name: "전체",
+      value: "all",
+    },
+    {
+      name: "동아시아",
+      value: "1",
+    },
+    {
+      name: "동남아시아",
+      value: "2",
+    },
+    {
+      name: "서남아시아",
+      value: "3",
+    },
+    {
+      name: "유럽",
+      value: "4",
+    },
+    {
+      name: "아메리카",
+      value: "6",
+    },
+    {
+      name: "아프리카",
+      value: "7",
+    },
+  ]);
+
+  const 선택값 = (event) => {
+    const cloneSearch = { ...search };
+    cloneSearch.category = event;
+    setSearch(cloneSearch);
+
+    console.log(setSearch);
+    navigate("/writing");
+  };
 
   const back = () => {
     navigate("/");
@@ -41,14 +85,20 @@ function Choose() {
         <h1>어디로 여행하시나요?</h1>
       </div>
       <div className="pageBody">
-        <button className="choose">1</button>
-        <button className="choose">2</button>
-        <button className="choose">3</button>
-        <button className="choose">4</button>
-        <button className="choose">5</button>
-        <button className="choose">6</button>
-        <button className="choose">7</button>
-        <button className="choose"></button>
+        {category.map((item, index) => {
+          const 활성화클래스명 =
+            search.category === item.value ? "activeBox" : "";
+
+          return (
+            <button
+              type="button"
+              className={`choose ${활성화클래스명}`}
+              onClick={선택값}
+            >
+              {item.name}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

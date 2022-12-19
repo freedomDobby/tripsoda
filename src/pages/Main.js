@@ -5,6 +5,8 @@ import "./main.css";
 import { useNavigate } from "react-router-dom";
 import { StoreContext } from "../App";
 
+// export const StoreContext = React.createContext({});
+
 axios.defaults.withCredentials = true;
 
 function Main() {
