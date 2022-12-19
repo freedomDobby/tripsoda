@@ -1,3 +1,13 @@
+.upBar1{
+  display: flex;
+  justify-content: space-between;
+}
+
+.upBar1 > p{
+  padding-top: 15px;
+  color: #b2b4b2;
+}
+
 .back {
   border: none;
   padding: 18px;
@@ -25,10 +35,10 @@
   color: rgb(37, 37, 37);
   margin: 0px 2% 14px;
 }
-.choose:last-child {
+/* .choose:last-child {
   opacity: 0%;
   cursor: default;
-}
+} */
 
 .activeBox {
   background: rgb(0, 206, 124);

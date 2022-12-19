@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Join from "./pages/Join";
 import User from "./pages/User";
 import Choose from "./pages/Choose";
+import ChooseDay from "./pages/ChooseDay";
 import Writing from "./pages/Writing";
 import axios from "axios";
 
@@ -25,6 +26,18 @@ function App() {
     자동로그인();
   }, []);
 
+   
+  // 저장용
+  const [data,setData] = React.useState({
+    title : '',
+    content : '',
+    category : '',
+    startDate : '',
+    endDate : '',
+  });
+
+  console.log(data);
+
   return (
     <StoreContext.Provider
       value={{
@@ -36,8 +49,9 @@ function App() {
         <Route exact path="/join" element={<Join />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/user" element={<User />} />
-        <Route exact path="/choose" element={<Choose />} />
-        <Route exact path="/writing" element={<Writing />} />
+        <Route exact path="/choose" element={<Choose data={data} setData={setData} />} />
+        <Route exact path="/chooseDay" element={<ChooseDay data={data} setData={setData} />} />
+        <Route exact path="/writing" element={<Writing data={data} setData={setData} />} />
 
         {/* <Route exact path="/oauth/callback/kakao" element={<카카오데이터 />} /> */}
       </Routes>

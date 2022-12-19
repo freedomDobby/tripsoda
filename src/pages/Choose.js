@@ -2,12 +2,14 @@ import axios from "axios";
 import React from "react";
 import "./choose.css";
 
-import { Navigate, NavigationType, useNavigate } from "react-router-dom";
+import { Navigate, NavigationType, useNavigate } from "react-router-dom"; 
+import { 카테고리기본값 } from "./Main";
 // import { StoreContext } from "/Main";
+
 
 axios.defaults.withCredentials = true;
 
-function Choose() {
+function Choose({data , setData}) {
   // const { category, setCategory, search } = React.useContext(StoreContext);
 
   const navigate = useNavigate();
@@ -17,44 +19,25 @@ function Choose() {
     category: "",
   });
 
-  const [category, setCategory] = React.useState([
-    {
-      name: "전체",
-      value: "all",
-    },
-    {
-      name: "동아시아",
-      value: "1",
-    },
-    {
-      name: "동남아시아",
-      value: "2",
-    },
-    {
-      name: "서남아시아",
-      value: "3",
-    },
-    {
-      name: "유럽",
-      value: "4",
-    },
-    {
-      name: "아메리카",
-      value: "6",
-    },
-    {
-      name: "아프리카",
-      value: "7",
-    },
-  ]);
+  const [category, setCategory] = React.useState(카테고리기본값);
 
-  const 선택값 = (event) => {
-    const cloneSearch = { ...search };
-    cloneSearch.category = event;
-    setSearch(cloneSearch);
+  const 기다려 = (s) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(true);
+      },s)
+    })
+  }
 
-    console.log(setSearch);
-    navigate("/writing");
+
+  const 선택값 = async (클릭한카테고리값) => {
+    const cloneData = {...data};
+    cloneData.category = 클릭한카테고리값;
+    setData(cloneData);
+
+    await 기다려(500);
+
+    navigate("/chooseDay");
   };
 
   const back = () => {
@@ -63,6 +46,7 @@ function Choose() {
 
   return (
     <div>
+      <div className="upBar1">
       <button className="back" onClick={back}>
         <svg
           width="10"
@@ -74,26 +58,32 @@ function Choose() {
           <path
             d="M9 1L1 9L9 17"
             stroke="#252525"
-            stroke-width="1"
-            stroke-linecap="square"
+            strokeWidth="1"
+            strokeLinecap="square"
           ></path>
         </svg>
       </button>
+      <p>대륙</p>
+      <p></p>
+      </div>
 
       <div className="title">
-        <h1>뫄뫄님!</h1>
-        <h1>어디로 여행하시나요?</h1>
+        <h2>어디로</h2>
+        <h2> 떠나시나요?</h2>
       </div>
       <div className="pageBody">
         {category.map((item, index) => {
           const 활성화클래스명 =
-            search.category === item.value ? "activeBox" : "";
+          data.category === item.value ? "activeBox" : "";
 
+
+        // console.log(setSearch);
+        // console.log(item.name);
           return (
             <button
               type="button"
               className={`choose ${활성화클래스명}`}
-              onClick={선택값}
+              onClick={선택값.bind(this,item.value)}
             >
               {item.name}
             </button>

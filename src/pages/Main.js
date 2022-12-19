@@ -7,6 +7,38 @@ import { StoreContext } from "../App";
 
 // export const StoreContext = React.createContext({});
 
+export 
+const 카테고리기본값 = [
+  {
+    name: "전체",
+    value: "all",
+  },
+  {
+    name: "동아시아",
+    value: "1",
+  },
+  {
+    name: "동남아시아",
+    value: "2",
+  },
+  {
+    name: "서남아시아",
+    value: "3",
+  },
+  {
+    name: "유럽",
+    value: "4",
+  },
+  {
+    name: "아메리카",
+    value: "6",
+  },
+  {
+    name: "아프리카",
+    value: "7",
+  },
+];
+
 axios.defaults.withCredentials = true;
 
 function Main() {
@@ -23,36 +55,7 @@ function Main() {
     category: "all",
   });
 
-  const [category, setCategory] = React.useState([
-    {
-      name: "전체",
-      value: "all",
-    },
-    {
-      name: "동아시아",
-      value: "1",
-    },
-    {
-      name: "동남아시아",
-      value: "2",
-    },
-    {
-      name: "서남아시아",
-      value: "3",
-    },
-    {
-      name: "유럽",
-      value: "4",
-    },
-    {
-      name: "아메리카",
-      value: "6",
-    },
-    {
-      name: "아프리카",
-      value: "7",
-    },
-  ]);
+  const [category, setCategory] = React.useState(카테고리기본값);
 
   const 카테고리변경 = (클릭한값) => {
     const cloneSearch = { ...search };
