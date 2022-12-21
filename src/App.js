@@ -8,6 +8,8 @@ import User from "./pages/User";
 import Choose from "./pages/Choose";
 import ChooseDay from "./pages/ChooseDay";
 import Writing from "./pages/Writing";
+import Mypage from "./pages/Mypage";
+
 import axios from "axios";
 
 export const StoreContext = React.createContext({});
@@ -26,15 +28,16 @@ function App() {
     자동로그인();
   }, []);
 
-   
   // 저장용
-  const [data,setData] = React.useState({
-    title : '',
-    content : '',
-    category : '',
-    startDate : '',
-    endDate : '',
+  const [data, setData] = React.useState({
+    title: "",
+    content: "",
+    category: "",
+    startDate: "",
+    endDate: "",
   });
+
+  // const [article, setAticle] = React.useState([]);
 
   console.log(data);
 
@@ -45,13 +48,26 @@ function App() {
       }}
     >
       <Routes>
-        <Route exact path="/" element={<Main />} />
+        <Route exact path="/" element={<Main />} setData={setData} />
         <Route exact path="/join" element={<Join />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/user" element={<User />} />
-        <Route exact path="/choose" element={<Choose data={data} setData={setData} />} />
-        <Route exact path="/chooseDay" element={<ChooseDay data={data} setData={setData} />} />
-        <Route exact path="/writing" element={<Writing data={data} setData={setData} />} />
+        <Route
+          exact
+          path="/choose"
+          element={<Choose data={data} setData={setData} />}
+        />
+        <Route
+          exact
+          path="/chooseDay"
+          element={<ChooseDay data={data} setData={setData} />}
+        />
+        <Route
+          exact
+          path="/writing"
+          element={<Writing data={data} setData={setData} />}
+        />
+        <Route exact path="/mypage" element={<Mypage />} />
 
         {/* <Route exact path="/oauth/callback/kakao" element={<카카오데이터 />} /> */}
       </Routes>

@@ -1,0 +1,15 @@
+.upbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #f1f1f1;
+  height: 45px;
+  color: rgb(130, 130, 130);
+}
+
+.user {
+  border: 1px solid black;
+}
+.myBoard {
+  border: 1px solid red;
+}

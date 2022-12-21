@@ -5,7 +5,7 @@ import qs from "qs";
 
 import { useNavigate } from "react-router-dom";
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 function Login() {
   const code = new URL(window.location.href).searchParams.get("code");

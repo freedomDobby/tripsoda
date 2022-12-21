@@ -15,13 +15,23 @@ function Writing({ data, setData }) {
   const 게시글 = (event) => {
     const cloneData = { ...data };
     cloneData[event.target.name] = event.target.value;
-    console.log(cloneData);
+    setData(cloneData);
+    console.log(data);
   };
   const 활성화 = data.content === "" ? "" : "ative";
 
-  const 저장 = () => {
+  const 저장 = async () => {
     //해당내용 저장
-    Navigate("/");
+
+    await axios({
+      url: "http://localhost:4000/article",
+      method: "POST",
+      data: data,
+    }).then(({ data }) => {
+      alert(data.message);
+    });
+
+    // Navigate("/");
   };
 
   return (
@@ -45,12 +55,12 @@ function Writing({ data, setData }) {
           <input
             type="text"
             name="content"
-            className={`inputBox2 ${활성화}`}
+            className={`inputBox2 `}
             onChange={게시글}
           ></input>
         </div>
       </div>
-      <button className="next" onClick={저장}>
+      <button className={`next ${활성화}`} onClick={저장}>
         저장
       </button>
     </div>

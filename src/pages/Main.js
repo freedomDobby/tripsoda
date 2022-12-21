@@ -41,13 +41,13 @@ export const 카테고리기본값 = [
 axios.defaults.withCredentials = true;
 
 function Main() {
-  const { loginUser } = React.useContext(StoreContext);
+  const { loginUser, data } = React.useContext(StoreContext);
   console.log(loginUser);
   const navigate = useNavigate();
-  const [data, setData] = React.useState({
-    id: "",
-    pw: "",
-  });
+  // const [data, setData] = React.useState({
+  //   id: "",
+  //   pw: "",
+  // });
 
   const [search, setSearch] = React.useState({
     text: "",
@@ -118,13 +118,17 @@ function Main() {
         <p></p>
         <div>
           <p className="ptag1">모집중인 글만 보기</p>
-          <label class="switch-button">
+          <label className="switch-button">
             <input type="checkbox" />
-            <span class="onoff-switch"></span>
+            <span className="onoff-switch"></span>
           </label>
         </div>
       </div>
-      <div className="border">여행게시물 보이기</div>
+      <div className="border">
+        {data.map((item, index) => {
+          return <div>{item.title}</div>;
+        })}
+      </div>
       <div className="underbar">
         <ul className="underbarImg">
           <li>
@@ -134,27 +138,7 @@ function Main() {
             />
             <p className="underText">커뮤니티</p>
           </li>
-          {/* <li>
-            <img
-              className="underImg"
-              src="https://tripsoda.com/images/common/foot_menu/store/off.svg"
-            />
-            <p className="underText">여행상점</p>
-          </li>
-          <li>
-            <img
-              className="underImg"
-              src="https://tripsoda.com/images/common/foot_menu/feed/off.svg"
-            />
-            <p className="underText">내 피드</p>
-          </li>
-          <li>
-            <img
-              className="underImg"
-              src="https://tripsoda.com/images/common/foot_menu/talk/off.svg"
-            />
-            <p className="underText">채팅</p>
-          </li> */}
+
           <li>
             <img
               className="underImg"

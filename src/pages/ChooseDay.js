@@ -23,7 +23,7 @@ function ChooseDay({ data, setData }) {
   //   const 활성화1 = data.startDate === "" ? "" : "ative";
 
   const 다음 = () => {
-    //   Navigate("/writing");
+    Navigate("/writing");
   };
 
   return (

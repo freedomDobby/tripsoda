@@ -72,6 +72,23 @@ app.post("/autoLogin", (req, res) => {
   res.send(req.session.loginUser);
 });
 
+app.post("/article", async (req, res) => {
+  const { loginUser } = req.session;
+
+  const { title, content, category, startDate, endDate } = req.body;
+
+  const result = {
+    code: "success",
+    message: "작성완료",
+  };
+
+  const query = `INSERT INTO article(title,content,category,start_date,end_date) VALUES("${title}","${content}","${category}","${startDate}","${endDate}")`;
+
+  await 디비실행(query);
+
+  res.send(result);
+});
+
 app.post("/join", async (req, res) => {
   const { id, pw } = req.body;
   const result = {
