@@ -7,6 +7,11 @@ import { Navigate, NavigationType, useNavigate } from "react-router-dom";
 axios.defaults.withCredentials = true;
 
 function Mypage() {
+  const navigate = useNavigate();
+
+  const moveback = () => {
+    navigate("/");
+  };
   return (
     <div>
       <div className="upbar">
@@ -26,13 +31,14 @@ function Mypage() {
             <img
               className="underImg"
               src="	https://tripsoda.com/images/common/foot_menu/home/off.svg"
+              onClick={moveback}
             />
             <p className="underText">커뮤니티</p>
           </li>
           <li>
             <img
               className="underImg"
-              src="https://tripsoda.com/images/common/foot_menu/mypage/off.svg"
+              src="https://tripsoda.com/images/common/foot_menu/mypage/on.svg"
             />
             <p className="underText">마이페이지</p>
           </li>

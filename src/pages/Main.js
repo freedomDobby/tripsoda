@@ -65,6 +65,10 @@ function Main() {
     navigate("/choose");
   };
 
+  const move = () => {
+    navigate("/mypage");
+  };
+
   return (
     <div>
       <div className="upBar">
@@ -124,17 +128,13 @@ function Main() {
           </label>
         </div>
       </div>
-      <div className="border">
-        {data.map((item, index) => {
-          return <div>{item.title}</div>;
-        })}
-      </div>
+      <div className="border">ddd</div>
       <div className="underbar">
         <ul className="underbarImg">
           <li>
             <img
               className="underImg"
-              src="	https://tripsoda.com/images/common/foot_menu/home/off.svg"
+              src="https://tripsoda.com/images/common/foot_menu/home/on.svg"
             />
             <p className="underText">커뮤니티</p>
           </li>
@@ -143,19 +143,22 @@ function Main() {
             <img
               className="underImg"
               src="https://tripsoda.com/images/common/foot_menu/mypage/off.svg"
+              onClick={move}
             />
             <p className="underText">마이페이지</p>
           </li>
         </ul>
       </div>
-
-      <button className="writing" onClick={선택}>
-        <p></p>
-      </button>
-      <img
-        className="pen"
-        src="https://cdn-icons-png.flaticon.com/128/1659/1659682.png"
-      />
+      <div className="buttonBox">
+        <button className="writing" onClick={선택}>
+          <p onClick={선택}></p>
+        </button>
+        <img
+          className="pen"
+          src="https://cdn-icons-png.flaticon.com/128/1659/1659682.png"
+          onClick={선택}
+        />
+      </div>
     </div>
   );
 }

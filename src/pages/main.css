@@ -171,6 +171,7 @@ button {
   /* flex-direction: row; */
   justify-content: space-around;
   align-items: center;
+  cursor: pointer;
 }
 .underImg {
   width: auto;
@@ -215,4 +216,8 @@ button {
 .active-category {
   border-radius: 60px;
   border: 2px solid rgb(0, 206, 124);
+}
+
+.buttonBox {
+  cursor: pointer;
 }
