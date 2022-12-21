@@ -7,20 +7,22 @@ import { StoreContext } from "../App";
 
 axios.defaults.withCredentials = true;
 
-function Writing({data,setData}) {
-
+function Writing({ data, setData }) {
   const Navigate = useNavigate();
 
   const { loginUser } = React.useContext(StoreContext);
-  const 게시글 = (event) => {
-    const cloneData = {...data};
-    cloneData[event.target.name] = event.target.value;
-  }
 
-  const 저장 =() =>{
+  const 게시글 = (event) => {
+    const cloneData = { ...data };
+    cloneData[event.target.name] = event.target.value;
+    console.log(cloneData);
+  };
+  const 활성화 = data.content === "" ? "" : "ative";
+
+  const 저장 = () => {
     //해당내용 저장
-    Navigate("/");    
-  }
+    Navigate("/");
+  };
 
   return (
     <div className="articlebody">
@@ -40,14 +42,17 @@ function Writing({data,setData}) {
           ></input>
         </div>
         <div className="text">
-          <input 
-           type="text" 
-           name="content" 
-           className="inputBox2" 
-           onChange={게시글}></input>
+          <input
+            type="text"
+            name="content"
+            className={`inputBox2 ${활성화}`}
+            onChange={게시글}
+          ></input>
         </div>
       </div>
-      <button className="next" onClick={저장}>저장</button>
+      <button className="next" onClick={저장}>
+        저장
+      </button>
     </div>
   );
 }

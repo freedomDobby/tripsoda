@@ -1,0 +1,29 @@
+div {
+  width: 100%;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.dataBox {
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: center;
+}
+
+.next {
+  width: 100%;
+  height: 48px;
+  background-color: #dbdbdb;
+  color: #fff;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  font-weight: 50px;
+  margin-top: 25px;
+}
+
+.ative {
+  background: rgb(0, 206, 124);
+  color: rgb(255, 255, 255);
+  transition: background-color 0.25s ease-out 0s;
+}

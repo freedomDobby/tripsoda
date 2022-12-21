@@ -2,14 +2,13 @@ import axios from "axios";
 import React from "react";
 import "./choose.css";
 
-import { Navigate, NavigationType, useNavigate } from "react-router-dom"; 
+import { Navigate, NavigationType, useNavigate } from "react-router-dom";
 import { 카테고리기본값 } from "./Main";
 // import { StoreContext } from "/Main";
 
-
 axios.defaults.withCredentials = true;
 
-function Choose({data , setData}) {
+function Choose({ data, setData }) {
   // const { category, setCategory, search } = React.useContext(StoreContext);
 
   const navigate = useNavigate();
@@ -25,13 +24,12 @@ function Choose({data , setData}) {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(true);
-      },s)
-    })
-  }
-
+      }, s);
+    });
+  };
 
   const 선택값 = async (클릭한카테고리값) => {
-    const cloneData = {...data};
+    const cloneData = { ...data };
     cloneData.category = 클릭한카테고리값;
     setData(cloneData);
 
@@ -47,24 +45,24 @@ function Choose({data , setData}) {
   return (
     <div>
       <div className="upBar1">
-      <button className="back" onClick={back}>
-        <svg
-          width="10"
-          height="18"
-          viewBox="0 0 10 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M9 1L1 9L9 17"
-            stroke="#252525"
-            strokeWidth="1"
-            strokeLinecap="square"
-          ></path>
-        </svg>
-      </button>
-      <p>대륙</p>
-      <p></p>
+        <button className="back" onClick={back}>
+          <svg
+            width="10"
+            height="18"
+            viewBox="0 0 10 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9 1L1 9L9 17"
+              stroke="#252525"
+              strokeWidth="1"
+              strokeLinecap="square"
+            ></path>
+          </svg>
+        </button>
+        <p>대륙</p>
+        <p></p>
       </div>
 
       <div className="title">
@@ -74,16 +72,15 @@ function Choose({data , setData}) {
       <div className="pageBody">
         {category.map((item, index) => {
           const 활성화클래스명 =
-          data.category === item.value ? "activeBox" : "";
+            data.category === item.value ? "activeBox" : "";
 
-
-        // console.log(setSearch);
-        // console.log(item.name);
+          // console.log(setSearch);
+          // console.log(item.name);
           return (
             <button
               type="button"
               className={`choose ${활성화클래스명}`}
-              onClick={선택값.bind(this,item.value)}
+              onClick={선택값.bind(this, item.value)}
             >
               {item.name}
             </button>

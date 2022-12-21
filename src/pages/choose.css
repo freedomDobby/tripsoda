@@ -1,9 +1,15 @@
-.upBar1{
+div {
+  width: 100%;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.upBar1 {
   display: flex;
   justify-content: space-between;
 }
 
-.upBar1 > p{
+.upBar1 > p {
   padding-top: 15px;
   color: #b2b4b2;
 }

@@ -7,8 +7,7 @@ import { StoreContext } from "../App";
 
 // export const StoreContext = React.createContext({});
 
-export 
-const 카테고리기본값 = [
+export const 카테고리기본값 = [
   {
     name: "전체",
     value: "all",
